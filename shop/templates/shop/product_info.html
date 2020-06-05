@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+<div class="container">
+  <hr class="featurette-divider"  style="margin-bottom: 100px" >
+    <div class="row featurette">
+      <div class="col-md-12">
+        <h2 style="color: #1c1d1f; margin-bottom: 25px;"><strong>{{ product.title }}</strong></h2>
+        <p class="lead" style="color: black;">{{ product.text }}</p>
+        <p class="text-muted">Цена: {{ product.price }} pуб.</p>
+        <small class="text-muted">{{ product.pub_data }}</small>
+        <p style="margin-top: 10px;">
+          <a class="btn btn-secondary" href="https://vk.com/im?sel=281787319" role="button" style="margin-lef: 18px;">Купить</a>
+          {% if user.is_authenticated %}
+            <a class="btn btn-secondary" href="https://yadi.sk/d/OzKPZk66ZtVxlg" download="" role="button">Скачать</a>
+            <a class="btn btn-secondary" href="{% url 'edit_product' pk=product.pk %}" role="button" style="margin-lef: 18px;">Редактировать</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </hr>
+</div>
+{% endblock %}

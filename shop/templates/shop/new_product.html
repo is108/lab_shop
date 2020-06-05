@@ -1,0 +1,7 @@
+{% extends 'shop/base.html' %}
+{% block content %}
+  <form method="POST" class="post-form" style="color: black; margin-left: 40px;">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

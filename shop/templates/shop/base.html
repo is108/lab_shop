@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Продажа лабораторных работ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bubble" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body style="margin: 0; height: 100%; background: url(/static/css/background2.jpg) no-repeat; /* Параметры фона */background-size: 100%; background-attachment: fixed;">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" style="font-family: 'Bubble', cursive;" href="/">ANYLABS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'new_product' %}">Добавить</a>
+            {% endif %}
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search">
+        </form>
+      </div>
+    </nav>
+    {% block content%}
+    {% endblock %}
+  </body>
+</html>
